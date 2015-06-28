@@ -1019,7 +1019,8 @@ class Client(requests.Session):
               dns=None, dns_search=None, volumes_from=None, network_mode=None,
               restart_policy=None, cap_add=None, cap_drop=None, devices=None,
               extra_hosts=None, read_only=None, pid_mode=None, ipc_mode=None,
-              security_opt=None, ulimits=None, mem_limit=0, memswap_limit=0):
+              security_opt=None, ulimits=None, mem_limit=0, memswap_limit=0,
+              oom_kill_disable=False):
 
         if utils.compare_version('1.10', self._version) < 0:
             if dns is not None:
@@ -1065,7 +1066,8 @@ class Client(requests.Session):
             network_mode=network_mode, restart_policy=restart_policy,
             extra_hosts=extra_hosts, read_only=read_only, pid_mode=pid_mode,
             ipc_mode=ipc_mode, security_opt=security_opt, ulimits=ulimits,
-            mem_limit=mem_limit, memswap_limit=memswap_limit
+            mem_limit=mem_limit, memswap_limit=memswap_limit,
+            oom_kill_disable=oom_kill_disable
         )
 
         if isinstance(container, dict):
